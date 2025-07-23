@@ -34,7 +34,7 @@ export const Navigation = ({ activeSystem, onSystemChange }: NavigationProps) =>
             <Brain className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-foreground">NEXUS</h1>
+            <h1 className="text-xl font-bold text-foreground">2030</h1>
             <p className="text-sm text-muted-foreground">Community Platform</p>
           </div>
         </div>

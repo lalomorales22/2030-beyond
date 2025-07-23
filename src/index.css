@@ -8,130 +8,128 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 40 10% 98%;
-    --foreground: 160 15% 15%;
+    /* 2030 Futuristic Color Palette - Matte Black/White with Subtle Hints */
+    --background: 220 8% 3%;
+    --foreground: 220 10% 92%;
 
-    --card: 40 15% 97%;
-    --card-foreground: 160 15% 15%;
+    --card: 220 8% 6%;
+    --card-foreground: 220 8% 90%;
 
-    --popover: 40 15% 97%;
-    --popover-foreground: 160 15% 15%;
+    --popover: 220 8% 4%;
+    --popover-foreground: 220 8% 90%;
 
-    --primary: 140 60% 35%;
-    --primary-foreground: 40 10% 98%;
+    --primary: 220 100% 55%;
+    --primary-foreground: 220 8% 95%;
 
-    --secondary: 35 25% 85%;
-    --secondary-foreground: 160 15% 15%;
+    --secondary: 220 8% 12%;
+    --secondary-foreground: 220 8% 85%;
 
-    --muted: 35 20% 92%;
-    --muted-foreground: 160 10% 45%;
+    --muted: 220 8% 10%;
+    --muted-foreground: 220 8% 65%;
 
-    --accent: 180 40% 70%;
-    --accent-foreground: 160 15% 15%;
+    --accent: 280 80% 60%;
+    --accent-foreground: 220 8% 95%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 40 10% 98%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 220 8% 95%;
 
-    --border: 35 15% 88%;
-    --input: 35 15% 88%;
-    --ring: 140 60% 35%;
+    --border: 220 8% 18%;
+    --input: 220 8% 15%;
+    --ring: 220 100% 55%;
 
     --radius: 0.75rem;
 
-    /* NEXUS Design System Colors */
-    --energy-primary: 85 80% 50%;
-    --energy-secondary: 120 60% 45%;
-    --housing-primary: 200 70% 55%;
-    --housing-secondary: 220 60% 45%;
-    --finance-primary: 280 65% 60%;
-    --finance-secondary: 260 55% 50%;
-    --governance-primary: 25 80% 55%;
-    --governance-secondary: 15 70% 45%;
-    --ai-primary: 300 70% 65%;
-    --ai-secondary: 320 60% 55%;
+    /* 2030 System Colors - Muted Tech Palette */
+    --energy-primary: 190 80% 45%;      /* Muted cyan */
+    --energy-secondary: 170 60% 35%;    /* Darker teal */
+    --housing-primary: 240 70% 50%;     /* Muted blue */
+    --housing-secondary: 250 60% 40%;   /* Darker blue */
+    --finance-primary: 280 70% 55%;     /* Muted purple */
+    --finance-secondary: 290 60% 45%;   /* Darker purple */
+    --governance-primary: 35 70% 50%;   /* Muted orange */
+    --governance-secondary: 25 60% 40%; /* Darker orange */
+    --ai-primary: 320 70% 55%;          /* Muted magenta */
+    --ai-secondary: 310 60% 45%;        /* Darker magenta */
 
-    /* Gradients */
-    --gradient-energy: linear-gradient(135deg, hsl(var(--energy-primary)), hsl(var(--energy-secondary)));
-    --gradient-housing: linear-gradient(135deg, hsl(var(--housing-primary)), hsl(var(--housing-secondary)));
-    --gradient-finance: linear-gradient(135deg, hsl(var(--finance-primary)), hsl(var(--finance-secondary)));
-    --gradient-governance: linear-gradient(135deg, hsl(var(--governance-primary)), hsl(var(--governance-secondary)));
-    --gradient-ai: linear-gradient(135deg, hsl(var(--ai-primary)), hsl(var(--ai-secondary)));
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    /* Gradients - Subtle overlays */
+    --gradient-energy: linear-gradient(135deg, hsl(var(--energy-primary) / 0.15), hsl(var(--energy-secondary) / 0.1));
+    --gradient-housing: linear-gradient(135deg, hsl(var(--housing-primary) / 0.15), hsl(var(--housing-secondary) / 0.1));
+    --gradient-finance: linear-gradient(135deg, hsl(var(--finance-primary) / 0.15), hsl(var(--finance-secondary) / 0.1));
+    --gradient-governance: linear-gradient(135deg, hsl(var(--governance-primary) / 0.15), hsl(var(--governance-secondary) / 0.1));
+    --gradient-ai: linear-gradient(135deg, hsl(var(--ai-primary) / 0.15), hsl(var(--ai-secondary) / 0.1));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1));
 
-    /* Shadows */
-    --shadow-soft: 0 4px 20px hsl(var(--primary) / 0.1);
-    --shadow-medium: 0 8px 30px hsl(var(--primary) / 0.15);
-    --shadow-strong: 0 12px 40px hsl(var(--primary) / 0.2);
+    /* Shadows - Subtle glows */
+    --shadow-soft: 0 4px 20px hsl(220 8% 0% / 0.3);
+    --shadow-medium: 0 8px 30px hsl(220 8% 0% / 0.4);
+    --shadow-strong: 0 12px 40px hsl(220 8% 0% / 0.5);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.1);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 220 8% 4%;
+    --sidebar-foreground: 220 8% 85%;
+    --sidebar-primary: 220 100% 55%;
+    --sidebar-primary-foreground: 220 8% 95%;
+    --sidebar-accent: 220 8% 8%;
+    --sidebar-accent-foreground: 220 8% 85%;
+    --sidebar-border: 220 8% 15%;
+    --sidebar-ring: 220 100% 55%;
   }
 
   .dark {
-    --background: 160 15% 8%;
-    --foreground: 40 10% 95%;
+    /* Dark mode is now the default - keeping same values */
+    --background: 220 8% 3%;
+    --foreground: 220 10% 92%;
 
-    --card: 160 15% 10%;
-    --card-foreground: 40 10% 95%;
+    --card: 220 8% 6%;
+    --card-foreground: 220 8% 90%;
 
-    --popover: 160 15% 10%;
-    --popover-foreground: 40 10% 95%;
+    --popover: 220 8% 4%;
+    --popover-foreground: 220 8% 90%;
 
-    --primary: 140 60% 60%;
-    --primary-foreground: 160 15% 8%;
+    --primary: 220 100% 55%;
+    --primary-foreground: 220 8% 95%;
 
-    --secondary: 160 10% 15%;
-    --secondary-foreground: 40 10% 95%;
+    --secondary: 220 8% 12%;
+    --secondary-foreground: 220 8% 85%;
 
-    --muted: 160 10% 15%;
-    --muted-foreground: 40 5% 65%;
+    --muted: 220 8% 10%;
+    --muted-foreground: 220 8% 65%;
 
-    --accent: 180 40% 40%;
-    --accent-foreground: 40 10% 95%;
+    --accent: 280 80% 60%;
+    --accent-foreground: 220 8% 95%;
 
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 40 10% 95%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 220 8% 95%;
 
-    --border: 160 10% 18%;
-    --input: 160 10% 18%;
-    --ring: 140 60% 60%;
+    --border: 220 8% 18%;
+    --input: 220 8% 15%;
+    --ring: 220 100% 55%;
 
-    /* Dark mode system colors */
-    --energy-primary: 85 70% 60%;
-    --energy-secondary: 120 50% 55%;
-    --housing-primary: 200 60% 65%;
-    --housing-secondary: 220 50% 55%;
-    --finance-primary: 280 55% 70%;
-    --finance-secondary: 260 45% 60%;
-    --governance-primary: 25 70% 65%;
-    --governance-secondary: 15 60% 55%;
-    --ai-primary: 300 60% 75%;
-    --ai-secondary: 320 50% 65%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Same system colors in dark mode */
+    --energy-primary: 190 80% 45%;
+    --energy-secondary: 170 60% 35%;
+    --housing-primary: 240 70% 50%;
+    --housing-secondary: 250 60% 40%;
+    --finance-primary: 280 70% 55%;
+    --finance-secondary: 290 60% 45%;
+    --governance-primary: 35 70% 50%;
+    --governance-secondary: 25 60% 40%;
+    --ai-primary: 320 70% 55%;
+    --ai-secondary: 310 60% 45%;
+
+    --sidebar-background: 220 8% 4%;
+    --sidebar-foreground: 220 8% 85%;
+    --sidebar-primary: 220 100% 55%;
+    --sidebar-primary-foreground: 220 8% 95%;
+    --sidebar-accent: 220 8% 8%;
+    --sidebar-accent-foreground: 220 8% 85%;
+    --sidebar-border: 220 8% 15%;
+    --sidebar-ring: 220 100% 55%;
   }
 }
 

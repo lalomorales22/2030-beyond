@@ -66,13 +66,13 @@ class BrowserDataService {
 
   private initializeData() {
     // Check if data already exists in localStorage
-    const storedCommunities = localStorage.getItem('nexus_communities');
+    const storedCommunities = localStorage.getItem('community_2030');
     if (storedCommunities) {
       this.communities = JSON.parse(storedCommunities);
-      this.energyData = JSON.parse(localStorage.getItem('nexus_energy') || '[]');
-      this.housingData = JSON.parse(localStorage.getItem('nexus_housing') || '[]');
-      this.financeData = JSON.parse(localStorage.getItem('nexus_finance') || '[]');
-      this.governanceData = JSON.parse(localStorage.getItem('nexus_governance') || '[]');
+      this.energyData = JSON.parse(localStorage.getItem('energy_2030') || '[]');
+      this.housingData = JSON.parse(localStorage.getItem('housing_2030') || '[]');
+      this.financeData = JSON.parse(localStorage.getItem('finance_2030') || '[]');
+      this.governanceData = JSON.parse(localStorage.getItem('governance_2030') || '[]');
       return;
     }
 
@@ -187,11 +187,11 @@ class BrowserDataService {
   }
 
   private saveToStorage() {
-    localStorage.setItem('nexus_communities', JSON.stringify(this.communities));
-    localStorage.setItem('nexus_energy', JSON.stringify(this.energyData));
-    localStorage.setItem('nexus_housing', JSON.stringify(this.housingData));
-    localStorage.setItem('nexus_finance', JSON.stringify(this.financeData));
-    localStorage.setItem('nexus_governance', JSON.stringify(this.governanceData));
+    localStorage.setItem('community_2030', JSON.stringify(this.communities));
+    localStorage.setItem('energy_2030', JSON.stringify(this.energyData));
+    localStorage.setItem('housing_2030', JSON.stringify(this.housingData));
+    localStorage.setItem('finance_2030', JSON.stringify(this.financeData));
+    localStorage.setItem('governance_2030', JSON.stringify(this.governanceData));
   }
 
   // Community methods
