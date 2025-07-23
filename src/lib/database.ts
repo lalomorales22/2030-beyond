@@ -1,5 +1,3 @@
-import Database from 'better-sqlite3';
-
 export interface CommunityData {
   id: string;
   name: string;
@@ -55,197 +53,183 @@ export interface GovernanceData {
   created_at: string;
 }
 
-class DatabaseService {
-  private db: Database.Database;
+class BrowserDataService {
+  private communities: CommunityData[] = [];
+  private energyData: EnergyData[] = [];
+  private housingData: HousingData[] = [];
+  private financeData: FinanceData[] = [];
+  private governanceData: GovernanceData[] = [];
 
   constructor() {
-    this.db = new Database('nexus_community.db');
-    this.initializeTables();
-    this.seedSampleData();
+    this.initializeData();
   }
 
-  private initializeTables() {
-    // Communities table
-    this.db.exec(`
-      CREATE TABLE IF NOT EXISTS communities (
-        id TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        location TEXT NOT NULL,
-        members INTEGER DEFAULT 0,
-        energy_generated REAL DEFAULT 0,
-        energy_consumed REAL DEFAULT 0,
-        housing_units INTEGER DEFAULT 0,
-        governance_proposals INTEGER DEFAULT 0,
-        financial_health REAL DEFAULT 0,
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP
-      )
-    `);
+  private initializeData() {
+    // Check if data already exists in localStorage
+    const storedCommunities = localStorage.getItem('nexus_communities');
+    if (storedCommunities) {
+      this.communities = JSON.parse(storedCommunities);
+      this.energyData = JSON.parse(localStorage.getItem('nexus_energy') || '[]');
+      this.housingData = JSON.parse(localStorage.getItem('nexus_housing') || '[]');
+      this.financeData = JSON.parse(localStorage.getItem('nexus_finance') || '[]');
+      this.governanceData = JSON.parse(localStorage.getItem('nexus_governance') || '[]');
+      return;
+    }
 
-    // Energy data table
-    this.db.exec(`
-      CREATE TABLE IF NOT EXISTS energy_data (
-        id TEXT PRIMARY KEY,
-        community_id TEXT NOT NULL,
-        timestamp TEXT DEFAULT CURRENT_TIMESTAMP,
-        solar_generation REAL DEFAULT 0,
-        battery_storage REAL DEFAULT 0,
-        grid_consumption REAL DEFAULT 0,
-        efficiency_score REAL DEFAULT 0,
-        FOREIGN KEY (community_id) REFERENCES communities (id)
-      )
-    `);
-
-    // Housing data table
-    this.db.exec(`
-      CREATE TABLE IF NOT EXISTS housing_data (
-        id TEXT PRIMARY KEY,
-        community_id TEXT NOT NULL,
-        unit_type TEXT NOT NULL,
-        occupancy_rate REAL DEFAULT 0,
-        maintenance_score REAL DEFAULT 0,
-        energy_efficiency REAL DEFAULT 0,
-        affordability_index REAL DEFAULT 0,
-        FOREIGN KEY (community_id) REFERENCES communities (id)
-      )
-    `);
-
-    // Finance data table
-    this.db.exec(`
-      CREATE TABLE IF NOT EXISTS finance_data (
-        id TEXT PRIMARY KEY,
-        community_id TEXT NOT NULL,
-        member_id TEXT NOT NULL,
-        credit_score INTEGER DEFAULT 0,
-        savings_balance REAL DEFAULT 0,
-        loan_amount REAL DEFAULT 0,
-        cooperative_shares INTEGER DEFAULT 0,
-        timestamp TEXT DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (community_id) REFERENCES communities (id)
-      )
-    `);
-
-    // Governance data table
-    this.db.exec(`
-      CREATE TABLE IF NOT EXISTS governance_data (
-        id TEXT PRIMARY KEY,
-        community_id TEXT NOT NULL,
-        proposal_title TEXT NOT NULL,
-        proposal_type TEXT NOT NULL,
-        votes_for INTEGER DEFAULT 0,
-        votes_against INTEGER DEFAULT 0,
-        status TEXT DEFAULT 'active',
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (community_id) REFERENCES communities (id)
-      )
-    `);
+    // Seed initial data
+    this.seedSampleData();
+    this.saveToStorage();
   }
 
   private seedSampleData() {
-    // Check if data already exists
-    const existingCommunities = this.db.prepare('SELECT COUNT(*) as count FROM communities').get() as { count: number };
-    if (existingCommunities.count > 0) return;
-
-    // Insert sample communities
-    const insertCommunity = this.db.prepare(`
-      INSERT INTO communities (id, name, location, members, energy_generated, energy_consumed, housing_units, governance_proposals, financial_health)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
-    const communities = [
-      ['community-1', 'Verde Valley Collective', 'Austin, TX', 150, 2500.5, 2100.2, 45, 12, 8.7],
-      ['community-2', 'Solar Springs Co-op', 'Phoenix, AZ', 220, 3200.8, 2800.1, 78, 18, 9.2],
-      ['community-3', 'EcoVillage North', 'Sacramento, CA', 180, 2800.3, 2400.7, 62, 15, 8.9]
+    // Sample communities
+    this.communities = [
+      {
+        id: 'community-1',
+        name: 'Verde Valley Collective',
+        location: 'Austin, TX',
+        members: 150,
+        energy_generated: 2500.5,
+        energy_consumed: 2100.2,
+        housing_units: 45,
+        governance_proposals: 12,
+        financial_health: 8.7,
+        created_at: new Date().toISOString()
+      },
+      {
+        id: 'community-2',
+        name: 'Solar Springs Co-op',
+        location: 'Phoenix, AZ',
+        members: 220,
+        energy_generated: 3200.8,
+        energy_consumed: 2800.1,
+        housing_units: 78,
+        governance_proposals: 18,
+        financial_health: 9.2,
+        created_at: new Date().toISOString()
+      },
+      {
+        id: 'community-3',
+        name: 'EcoVillage North',
+        location: 'Sacramento, CA',
+        members: 180,
+        energy_generated: 2800.3,
+        energy_consumed: 2400.7,
+        housing_units: 62,
+        governance_proposals: 15,
+        financial_health: 8.9,
+        created_at: new Date().toISOString()
+      }
     ];
 
-    communities.forEach(community => {
-      insertCommunity.run(...community);
-    });
-
-    // Insert sample energy data
-    const insertEnergy = this.db.prepare(`
-      INSERT INTO energy_data (id, community_id, solar_generation, battery_storage, grid_consumption, efficiency_score)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `);
-
+    // Sample energy data
     for (let i = 0; i < 10; i++) {
-      insertEnergy.run(
-        `energy-${i + 1}`,
-        'community-1',
-        Math.random() * 100 + 50,
-        Math.random() * 80 + 20,
-        Math.random() * 60 + 10,
-        Math.random() * 20 + 80
-      );
+      this.energyData.push({
+        id: `energy-${i + 1}`,
+        community_id: 'community-1',
+        timestamp: new Date(Date.now() - i * 86400000).toISOString(),
+        solar_generation: Math.random() * 100 + 50,
+        battery_storage: Math.random() * 80 + 20,
+        grid_consumption: Math.random() * 60 + 10,
+        efficiency_score: Math.random() * 20 + 80
+      });
     }
 
-    // Insert sample housing data
-    const insertHousing = this.db.prepare(`
-      INSERT INTO housing_data (id, community_id, unit_type, occupancy_rate, maintenance_score, energy_efficiency, affordability_index)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
-    `);
-
+    // Sample housing data
     const housingTypes = ['Studio', '1BR', '2BR', '3BR', 'Family'];
     housingTypes.forEach((type, index) => {
-      insertHousing.run(
-        `housing-${index + 1}`,
-        'community-1',
-        type,
-        Math.random() * 20 + 80,
-        Math.random() * 20 + 80,
-        Math.random() * 30 + 70,
-        Math.random() * 30 + 70
-      );
+      this.housingData.push({
+        id: `housing-${index + 1}`,
+        community_id: 'community-1',
+        unit_type: type,
+        occupancy_rate: Math.random() * 20 + 80,
+        maintenance_score: Math.random() * 20 + 80,
+        energy_efficiency: Math.random() * 30 + 70,
+        affordability_index: Math.random() * 30 + 70
+      });
     });
 
-    // Insert sample governance data
-    const insertGovernance = this.db.prepare(`
-      INSERT INTO governance_data (id, community_id, proposal_title, proposal_type, votes_for, votes_against, status)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
-    `);
-
+    // Sample governance data
     const proposals = [
-      ['gov-1', 'community-1', 'Install Additional Solar Panels', 'Infrastructure', 85, 12, 'approved'],
-      ['gov-2', 'community-1', 'Community Garden Expansion', 'Community', 78, 8, 'active'],
-      ['gov-3', 'community-1', 'New Cooperative Bank Partnership', 'Finance', 92, 15, 'approved']
+      {
+        id: 'gov-1',
+        community_id: 'community-1',
+        proposal_title: 'Install Additional Solar Panels',
+        proposal_type: 'Infrastructure',
+        votes_for: 85,
+        votes_against: 12,
+        status: 'approved',
+        created_at: new Date().toISOString()
+      },
+      {
+        id: 'gov-2',
+        community_id: 'community-1',
+        proposal_title: 'Community Garden Expansion',
+        proposal_type: 'Community',
+        votes_for: 78,
+        votes_against: 8,
+        status: 'active',
+        created_at: new Date().toISOString()
+      },
+      {
+        id: 'gov-3',
+        community_id: 'community-1',
+        proposal_title: 'New Cooperative Bank Partnership',
+        proposal_type: 'Finance',
+        votes_for: 92,
+        votes_against: 15,
+        status: 'approved',
+        created_at: new Date().toISOString()
+      }
     ];
 
-    proposals.forEach(proposal => {
-      insertGovernance.run(...proposal);
-    });
+    this.governanceData = proposals;
+  }
+
+  private saveToStorage() {
+    localStorage.setItem('nexus_communities', JSON.stringify(this.communities));
+    localStorage.setItem('nexus_energy', JSON.stringify(this.energyData));
+    localStorage.setItem('nexus_housing', JSON.stringify(this.housingData));
+    localStorage.setItem('nexus_finance', JSON.stringify(this.financeData));
+    localStorage.setItem('nexus_governance', JSON.stringify(this.governanceData));
   }
 
   // Community methods
   getCommunities(): CommunityData[] {
-    return this.db.prepare('SELECT * FROM communities').all() as CommunityData[];
+    return this.communities;
   }
 
   getCommunity(id: string): CommunityData | undefined {
-    return this.db.prepare('SELECT * FROM communities WHERE id = ?').get(id) as CommunityData | undefined;
+    return this.communities.find(c => c.id === id);
   }
 
   // Energy methods
   getEnergyData(communityId: string): EnergyData[] {
-    return this.db.prepare('SELECT * FROM energy_data WHERE community_id = ? ORDER BY timestamp DESC LIMIT 30').all(communityId) as EnergyData[];
+    return this.energyData
+      .filter(e => e.community_id === communityId)
+      .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+      .slice(0, 30);
   }
 
   // Housing methods
   getHousingData(communityId: string): HousingData[] {
-    return this.db.prepare('SELECT * FROM housing_data WHERE community_id = ?').all(communityId) as HousingData[];
+    return this.housingData.filter(h => h.community_id === communityId);
   }
 
   // Finance methods
   getFinanceData(communityId: string): FinanceData[] {
-    return this.db.prepare('SELECT * FROM finance_data WHERE community_id = ? ORDER BY timestamp DESC LIMIT 50').all(communityId) as FinanceData[];
+    return this.financeData
+      .filter(f => f.community_id === communityId)
+      .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+      .slice(0, 50);
   }
 
   // Governance methods
   getGovernanceData(communityId: string): GovernanceData[] {
-    return this.db.prepare('SELECT * FROM governance_data WHERE community_id = ? ORDER BY created_at DESC').all(communityId) as GovernanceData[];
-  }
-
-  close() {
-    this.db.close();
+    return this.governanceData
+      .filter(g => g.community_id === communityId)
+      .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
   }
 }
 
-export const dbService = new DatabaseService();
+export const dbService = new BrowserDataService();
