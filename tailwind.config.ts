@@ -61,7 +61,45 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// NEXUS System Colors
+				energy: {
+					primary: 'hsl(var(--energy-primary))',
+					secondary: 'hsl(var(--energy-secondary))'
+				},
+				housing: {
+					primary: 'hsl(var(--housing-primary))',
+					secondary: 'hsl(var(--housing-secondary))'
+				},
+				finance: {
+					primary: 'hsl(var(--finance-primary))',
+					secondary: 'hsl(var(--finance-secondary))'
+				},
+				governance: {
+					primary: 'hsl(var(--governance-primary))',
+					secondary: 'hsl(var(--governance-secondary))'
+				},
+				ai: {
+					primary: 'hsl(var(--ai-primary))',
+					secondary: 'hsl(var(--ai-secondary))'
 				}
+			},
+			backgroundImage: {
+				'gradient-energy': 'var(--gradient-energy)',
+				'gradient-housing': 'var(--gradient-housing)',
+				'gradient-finance': 'var(--gradient-finance)',
+				'gradient-governance': 'var(--gradient-governance)',
+				'gradient-ai': 'var(--gradient-ai)',
+				'gradient-primary': 'var(--gradient-primary)'
+			},
+			boxShadow: {
+				'soft': 'var(--shadow-soft)',
+				'medium': 'var(--shadow-medium)',
+				'strong': 'var(--shadow-strong)'
+			},
+			transitionTimingFunction: {
+				'smooth': 'var(--transition-smooth)',
+				'spring': 'var(--transition-spring)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

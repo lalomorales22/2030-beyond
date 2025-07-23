@@ -8,35 +8,64 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 40 10% 98%;
+    --foreground: 160 15% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 40 15% 97%;
+    --card-foreground: 160 15% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 40 15% 97%;
+    --popover-foreground: 160 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 140 60% 35%;
+    --primary-foreground: 40 10% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 35 25% 85%;
+    --secondary-foreground: 160 15% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 35 20% 92%;
+    --muted-foreground: 160 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 180 40% 70%;
+    --accent-foreground: 160 15% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 10% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 15% 88%;
+    --input: 35 15% 88%;
+    --ring: 140 60% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* NEXUS Design System Colors */
+    --energy-primary: 85 80% 50%;
+    --energy-secondary: 120 60% 45%;
+    --housing-primary: 200 70% 55%;
+    --housing-secondary: 220 60% 45%;
+    --finance-primary: 280 65% 60%;
+    --finance-secondary: 260 55% 50%;
+    --governance-primary: 25 80% 55%;
+    --governance-secondary: 15 70% 45%;
+    --ai-primary: 300 70% 65%;
+    --ai-secondary: 320 60% 55%;
+
+    /* Gradients */
+    --gradient-energy: linear-gradient(135deg, hsl(var(--energy-primary)), hsl(var(--energy-secondary)));
+    --gradient-housing: linear-gradient(135deg, hsl(var(--housing-primary)), hsl(var(--housing-secondary)));
+    --gradient-finance: linear-gradient(135deg, hsl(var(--finance-primary)), hsl(var(--finance-secondary)));
+    --gradient-governance: linear-gradient(135deg, hsl(var(--governance-primary)), hsl(var(--governance-secondary)));
+    --gradient-ai: linear-gradient(135deg, hsl(var(--ai-primary)), hsl(var(--ai-secondary)));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--primary) / 0.1);
+    --shadow-medium: 0 8px 30px hsl(var(--primary) / 0.15);
+    --shadow-strong: 0 12px 40px hsl(var(--primary) / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +85,45 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 160 15% 8%;
+    --foreground: 40 10% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 160 15% 10%;
+    --card-foreground: 40 10% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 160 15% 10%;
+    --popover-foreground: 40 10% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 140 60% 60%;
+    --primary-foreground: 160 15% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 160 10% 15%;
+    --secondary-foreground: 40 10% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 160 10% 15%;
+    --muted-foreground: 40 5% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 180 40% 40%;
+    --accent-foreground: 40 10% 95%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 40 10% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 160 10% 18%;
+    --input: 160 10% 18%;
+    --ring: 140 60% 60%;
+
+    /* Dark mode system colors */
+    --energy-primary: 85 70% 60%;
+    --energy-secondary: 120 50% 55%;
+    --housing-primary: 200 60% 65%;
+    --housing-secondary: 220 50% 55%;
+    --finance-primary: 280 55% 70%;
+    --finance-secondary: 260 45% 60%;
+    --governance-primary: 25 70% 65%;
+    --governance-secondary: 15 60% 55%;
+    --ai-primary: 300 60% 75%;
+    --ai-secondary: 320 50% 65%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
