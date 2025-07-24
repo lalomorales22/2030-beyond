@@ -1,4 +1,5 @@
 # 2030 Community Platform
+<img width="1221" height="1002" alt="Screenshot 2025-07-23 at 5 26 27 PM" src="https://github.com/user-attachments/assets/b934d60a-8fb6-4737-a856-085634f8d56c" />
 
 A futuristic autonomous community cooperative platform that integrates multiple systems for sustainable living and collaboration.
 
