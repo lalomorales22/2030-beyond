@@ -1,54 +1,68 @@
-# Welcome to your Lovable project
+# 2030 Community Platform
 
-## Project info
+A futuristic autonomous community cooperative platform that integrates multiple systems for sustainable living and collaboration.
 
-**URL**: https://lovable.dev/projects/35aad7d3-f405-48fb-9582-418a155195f3
+## Project Overview
 
-## How can I edit this code?
+The 2030 Community Platform is an integrated dashboard that manages five core systems:
 
-There are several ways of editing your application.
+- **Energy Commons** - Renewable energy sharing and grid management
+- **Housing Network** - Cooperative housing allocation and management
+- **Finance Co-op** - Community-driven financial services and resource sharing
+- **Governance** - Transparent decision-making and community governance
+- **AI Engine** - Intelligent automation and optimization across all systems
 
-**Use Lovable**
+The platform features a sleek, futuristic design with a black and white aesthetic, matte colors, and subtle accent highlights.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/35aad7d3-f405-48fb-9582-418a155195f3) and start prompting.
+## Repository
 
-Changes made via Lovable will be committed automatically to this repo.
+**GitHub**: https://github.com/lalomorales22/2030-community-app.git
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+### Installation & Development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/lalomorales22/2030-community-app.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd 2030-community-app
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Building for Production
 
-**Use GitHub Codespaces**
+```sh
+# Build the project
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview the production build
+npm run preview
+```
+
+## Development Options
+
+### Using Lovable
+
+You can edit this project using [Lovable](https://lovable.dev/projects/35aad7d3-f405-48fb-9582-418a155195f3) for AI-powered development.
+
+### Using GitHub Codespaces
+
+- Navigate to the [repository](https://github.com/lalomorales22/2030-community-app)
+- Click the "Code" button and select "Codespaces"
+- Click "New codespace" to launch a development environment
 
 ## What technologies are used for this project?
 
