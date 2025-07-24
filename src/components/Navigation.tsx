@@ -78,7 +78,11 @@ export const Navigation = ({ activeSystem, onSystemChange }: NavigationProps) =>
 
       {/* Settings */}
       <div className="p-4 border-t border-border">
-        <Button variant="ghost" className="w-full justify-start gap-3 h-12">
+        <Button 
+          variant="ghost" 
+          className="w-full justify-start gap-3 h-12"
+          onClick={() => window.location.href = '/settings'}
+        >
           <Settings className="w-5 h-5" />
           <span>Settings</span>
         </Button>
